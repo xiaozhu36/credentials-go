@@ -137,6 +137,7 @@ func (r *RAMRoleArnCredential) updateCredential() (err error) {
 	if r.runtime.STSEndpoint != "" {
 		request.Domain = r.runtime.STSEndpoint
 	}
+
 	request.Scheme = "HTTPS"
 	request.Method = "GET"
 	request.QueryParams["AccessKeyId"] = r.AccessKeyId

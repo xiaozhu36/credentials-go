@@ -229,6 +229,7 @@ func NewCredential(config *Config) (credential Credential, err error) {
 		if err != nil {
 			return
 		}
+		debuglog(">> xiaozhu debug. Host: %s; sts endpoint: %s", config.Host, config.STSEndpoint)
 		runtime := &utils.Runtime{
 			Host:           tea.StringValue(config.Host),
 			Proxy:          tea.StringValue(config.Proxy),
@@ -372,7 +373,7 @@ func doAction(request *request.CommonRequest, runtime *utils.Runtime) (content [
 	}
 	httpRequest.Proto = "HTTP/1.1"
 	httpRequest.Host = request.Domain
-	debuglog("> %s %s %s", httpRequest.Method, httpRequest.URL.RequestURI(), httpRequest.Proto)
+	debuglog("> xiaozhu debug. method: %s;;; URI: %s ;; proto:%s", httpRequest.Method, httpRequest.URL.RequestURI(), httpRequest.Proto)
 	debuglog("> Host: %s", httpRequest.Host)
 	for key, value := range request.Headers {
 		if value != "" {
